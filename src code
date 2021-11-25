@@ -1,0 +1,112 @@
+
+int traffic1[]={0,1,2};
+int traffic2[]={3,4,5};
+int traffic3[]={6,7,8};
+int var =0;
+int vardelay=2000;
+
+void setup()
+{
+  for(int i=0;i<9;i++)
+  {
+  pinMode(i, OUTPUT);
+  }
+ 
+}
+
+void loop()
+{
+  if(var==0)
+  {
+    traffic3off();
+    traffic2off();
+  traffic1on();
+    
+    var=1;
+  }
+   delay(vardelay);
+  if(var==1)
+  {
+    traffic3off();
+  traffic1off();
+    traffic2on();
+    var=2;
+  }
+  if(var==2)
+  {
+    traffic1off();
+    traffic2off();
+    traffic3on();
+  }
+  var=0;
+
+ }
+  void traffic1on()
+  {
+    
+    for(int i=0;i<3;i++)
+     {
+     
+     digitalWrite(i, HIGH);
+     delay(vardelay); // Wait for 1000 millisecond(s)
+       if(i==2)
+      {
+        delay(5000);
+      }
+     digitalWrite(i, LOW);
+     delay(vardelay); // Wait for 1000 millisecond(s)
+      }
+    
+    
+  }
+    void traffic1off()
+    {
+  
+     digitalWrite(0, HIGH);
+     delay(vardelay); // Wait for 1000 millisecond(s)
+  
+    }
+//=========================//
+    void traffic2on()
+    {
+       for(int i=3;i<6;i++)
+     {
+     
+     digitalWrite(i, HIGH);
+     delay(vardelay); // Wait for 1000 millisecond(s)
+       if(i==5)
+      {
+        delay(5000);
+      }
+     digitalWrite(i, LOW);
+     delay(vardelay); // Wait for 1000 millisecond(s)
+      }
+    }
+void traffic2off()
+{
+    digitalWrite(3, HIGH);
+     delay(vardelay); 
+  
+}
+//===================//
+void traffic3on()
+{
+     for(int i=6;i<9;i++)
+     {
+     
+     digitalWrite(i, HIGH);
+     delay(vardelay); // Wait for 1000 millisecond(s)
+       if(i==8)
+      {
+        delay(5000);
+      }
+     digitalWrite(i, LOW);
+     delay(vardelay); // Wait for 1000 millisecond(s)
+      }
+}  
+ void traffic3off()
+ {
+    digitalWrite(6, HIGH);
+     delay(vardelay);
+   
+ }
